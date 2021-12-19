@@ -18,16 +18,22 @@ function displayProduct(product) {
   colorElement.innerHTML += product.getColorOptionsHTML();
 }
 
-let product_url = `http://localhost:3000/api/products/${productId}`;
-fetch(product_url)
-  .then(function(res) {
-    if (res.ok) {
-      return res.json();
-    }
-  })
-  .then(function(product_json) {
-    displayProduct(new Product(product_json));
-  })
-  .catch(function(err) {
-    console.log(err);
-  })
+function loadProduct() {
+  let product_url = `http://localhost:3000/api/products/${productId}`;
+  fetch(product_url)
+    .then(function(res) {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then(function(product_json) {
+      let product = new Product(product_json);
+      localStorage.setItem('product', JSON.stringify(product));
+      displayProduct(product);
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
+}
+
+loadProduct()

@@ -1,4 +1,4 @@
-function load_products(products_json) {
+function instantiate_products(products_json) {
   products = [];
 
   for (let json of products_json) {
@@ -24,7 +24,7 @@ fetch(products_url)
     }
   })
   .then(function(products_json) {
-    display_products(load_products(products_json));
+    display_products(instantiate_products(products_json));
   })
   .catch(function(err) {
     console.log(err)
