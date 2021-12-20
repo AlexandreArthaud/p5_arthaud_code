@@ -7,6 +7,7 @@ for (let item of itemElements) {
   itemDeleteButton.addEventListener('click', function() {
     console.log(itemID);
     // item.style.display = 'none';
+    item.parentElement.removeChild(item);
 
     let cart = JSON.parse(localStorage.getItem('cart'));
     for (let item of cart) {
