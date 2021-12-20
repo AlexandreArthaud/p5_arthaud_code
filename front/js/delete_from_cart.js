@@ -5,8 +5,6 @@ for (let item of itemElements) {
   let itemDeleteButton = item.querySelector('.deleteItem');
 
   itemDeleteButton.addEventListener('click', function() {
-    console.log(itemID);
-    // item.style.display = 'none';
     item.parentElement.removeChild(item);
 
     let cart = JSON.parse(localStorage.getItem('cart'));
@@ -19,4 +17,17 @@ for (let item of itemElements) {
       }
     }
   })
+
+  let itemQuantityInput = item.querySelector('.itemQuantity');
+
+  itemQuantityInput.addEventListener('change', function(event) {
+    let cart = JSON.parse(localStorage.getItem('cart')); 
+    for (let item of cart) { 
+      if (itemID === item.product._id) {
+        item.quantity = event.target.value;
+        console.log("Quantity updated");
+        localStorage.setItem('cart',  JSON.stringify(cart))
+      }
+    }
+  });
 }
