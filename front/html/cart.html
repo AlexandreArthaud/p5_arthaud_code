@@ -17,6 +17,7 @@
     <script src="../js/models/product.js" defer></script>
     <script src="../js/load_cart.js" defer></script>
     <script src="../js/update_cart.js" defer></script>
+    <script src="../js/send_command.js" defer></script>
   </head>
 
   <body>
@@ -81,12 +82,20 @@
               <form method="get" action="confirmation.html" class="cart__order__form">
                 <div class="cart__order__form__question">
                   <label for="firstName">Prénom: </label>
-                  <input type="text" name="firstName" id="firstName" required>
+                  <input type="text" name="firstName" id="firstName"
+                         pattern="^[^0-9]*$"
+                         oninvalid="setCustomValidity('Ne peut contenir que des lettres')"
+                         oninput="setCustomValidity('')"
+                         required>
                   <p id="firstNameErrorMsg"><!-- ci est un message d'erreur --></p>
                 </div>
                 <div class="cart__order__form__question">
                   <label for="lastName">Nom: </label>
-                  <input type="text" name="lastName" id="lastName" required>
+                  <input type="text" name="lastName" id="lastName"
+                         pattern="^[^0-9]*$"
+                         oninvalid="setCustomValidity('Ne peut contenir que des lettres')"
+                         oninput="setCustomValidity('')"
+                         required>
                   <p id="lastNameErrorMsg"></p>
                 </div>
                 <div class="cart__order__form__question">
