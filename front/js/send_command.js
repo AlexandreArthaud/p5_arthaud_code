@@ -52,11 +52,12 @@ function createOrder() {
   .catch((error) => {
     console.error(error);
   });
-
-  return false;
 }
 
 formSubmitElement.addEventListener('click', function(event) {
+  if (!formElement.checkValidity()) {
+    return false;
+  }
   event.preventDefault();
   createOrder();
 })
