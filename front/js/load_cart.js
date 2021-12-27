@@ -36,7 +36,8 @@ function loadCart() {
           <div class="cart__item__content__settings">
             <div class="cart__item__content__settings__quantity">
               <p>Qté : </p>
-              <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" value="${quantity}">
+              <input type="number" class="itemQuantity" name="itemQuantity" min="1" max="100" value="${quantity}"
+               oninput="this.value = Math.abs(this.value) > 1 ? Math.abs(this.value) : 1">
             </div>
             <div class="cart__item__content__settings__delete">
               <p class="deleteItem">Supprimer</p>
