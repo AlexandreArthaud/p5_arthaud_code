@@ -1,26 +1,16 @@
-let addToPanelButton = document.querySelector("#addToCart");
+let addToCartButton = document.querySelector("#addToCart");
 
-addToPanelButton.addEventListener('click', function(event) {
+function addToCart(product, quantity, color) {
   let cart = JSON.parse(localStorage.getItem('cart'));
+
   if (!cart) {
     cart = [];
   }
 
-  let product = JSON.parse(localStorage.getItem('product'));
-  let quantity = document.querySelector('#quantity').value;
-  quantity = Number(quantity);
-  let color = document.querySelector("#colors").value;
+  let existing = false;
 
-  existing = false;
   for (let item of cart) {
-    console.log(item['product']);
-    console.log(product);
-
-    console.log(item['color']);
-    console.log(color);
-
     if (JSON.stringify(item['product']) === JSON.stringify(product) && item['color'] === color) {
-      console.log("duplicated element");
       item['quantity'] += quantity;
       existing = true;
     }
@@ -34,8 +24,17 @@ addToPanelButton.addEventListener('click', function(event) {
         'color': color,
       }
     );
-    console.log("Element added")
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+addToCartButton.addEventListener('click', function(event) {
+  let product = JSON.parse(localStorage.getItem('product'));
+
+  let quantity = document.querySelector('#quantity').value;
+  quantity = Number(quantity);
+  let color = document.querySelector("#colors").value;
+
+  addToCart(product, quantity, color);
 });

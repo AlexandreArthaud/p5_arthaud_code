@@ -1,5 +1,5 @@
 let formElement = document.querySelector(".cart__order__form");
-let formSubmitElement = document.querySelector(".cart__order__form input[type='submit']")
+let formSubmitElement = document.querySelector(".cart__order__form input[type='button']")
 
 function getContactObject() {
   let firstName = document.querySelector("#firstName").value;
@@ -52,11 +52,15 @@ function createOrder() {
   .catch((error) => {
     console.error(error);
   });
-
-  return false;
 }
 
 formSubmitElement.addEventListener('click', function(event) {
-  event.preventDefault();
-  createOrder();
-})
+  let cart = JSON.parse(localStorage.getItem('cart'));
+
+  if (formElement.checkValidity() && cart.length > 0) {
+    createOrder();
+  }
+  else {
+    formElement.reportValidity();
+  }
+});
