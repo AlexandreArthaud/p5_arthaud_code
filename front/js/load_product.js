@@ -1,6 +1,3 @@
-let current_url = new URL(window.location.href);
-let productId = current_url.searchParams.get('id');
-
 function displayProduct(product) {
   let imageElement = document.querySelector('.item__img')
   imageElement.innerHTML += product.getImgHTML();
@@ -19,7 +16,10 @@ function displayProduct(product) {
 }
 
 function loadProduct() {
+  let current_url = new URL(window.location.href);
+  let productId = current_url.searchParams.get('id');
   let product_url = `http://localhost:3000/api/products/${productId}`;
+
   fetch(product_url)
     .then(function(res) {
       if (res.ok) {

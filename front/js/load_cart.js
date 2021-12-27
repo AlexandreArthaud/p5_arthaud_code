@@ -1,10 +1,6 @@
 function loadCart() {
   let cart = JSON.parse(localStorage.getItem('cart'));
-  let cart__items = document.querySelector("#cart__items");
-
-  if (!cart) {
-    throw new Error("No cart");
-  }
+  let cartItemsElement = document.querySelector("#cart__items");
 
   for (let item of cart) {
     let product = null;
@@ -22,7 +18,7 @@ function loadCart() {
       }
     }
 
-    cart__items.innerHTML += `
+    cartItemsElement.innerHTML += `
       <article class="cart__item" data-id="${product._id}" data-color="${color}">
         <div class="cart__item__img">
           <img src="${product._imageUrl}" alt="Photographie d'un canapé">
