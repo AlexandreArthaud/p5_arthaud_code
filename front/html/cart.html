@@ -17,6 +17,7 @@
     <script src="../js/models/product.js" defer></script>
     <script src="../js/load_cart.js" defer></script>
     <script src="../js/update_cart.js" defer></script>
+    <script src="../js/validate_cart.js" defer></script>
     <script src="../js/send_command.js" defer></script>
   </head>
 
@@ -83,18 +84,20 @@
                 <div class="cart__order__form__question">
                   <label for="firstName">Prénom: </label>
                   <input type="text" name="firstName" id="firstName"
-                         pattern="^[^0-9]*$"
-                         oninvalid="setCustomValidity('Ne peut contenir que des lettres')"
-                         oninput="setCustomValidity('')"
+                         oninput="validateFormInput(value, '^[^0-9]*$',
+                                                    'firstNameErrorMsg',
+                                                    'Ne peut contenir que des lettres'
+                                                    )"
                          required>
                   <p id="firstNameErrorMsg"><!-- ci est un message d'erreur --></p>
                 </div>
                 <div class="cart__order__form__question">
                   <label for="lastName">Nom: </label>
                   <input type="text" name="lastName" id="lastName"
-                         pattern="^[^0-9]*$"
-                         oninvalid="setCustomValidity('Ne peut contenir que des lettres')"
-                         oninput="setCustomValidity('')"
+                         oninput="validateFormInput(value, '^[^0-9]*$',
+                                                    'lastNameErrorMsg',
+                                                    'Ne peut contenir que des lettres'
+                                                    )"
                          required>
                   <p id="lastNameErrorMsg"></p>
                 </div>
@@ -110,7 +113,13 @@
                 </div>
                 <div class="cart__order__form__question">
                   <label for="email">Email: </label>
-                  <input type="email" name="email" id="email" required>
+                  <input type="email" name="email" id="email"
+                         oninput="validateFormInput(value, '.*@.*',
+                                                    'emailErrorMsg',
+                                                    'Une adress email doit contenir un arobase (@)'
+                                                  )"
+                                                    
+                         required>
                   <p id="emailErrorMsg"></p>
                 </div>
                 <div class="cart__order__form__submit">
