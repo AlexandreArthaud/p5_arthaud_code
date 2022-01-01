@@ -1,4 +1,8 @@
-let orderId = localStorage.getItem('orderId');
-localStorage.removeItem('orderId');
+function displayOrderId() {
+    // get order Id from URL and diplay it in the HTML
+    let current_url = new URL(window.location.href);
+    let orderId = current_url.searchParams.get('orderId');
+    document.getElementById('orderId').innerHTML = orderId;
+}
 
-document.getElementById('orderId').innerHTML = orderId;
+displayOrderId();

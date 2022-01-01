@@ -46,8 +46,7 @@ function createOrder() {
   })
   .then(response => response.json())
   .then(data => {
-    localStorage.setItem('orderId', data.orderId);
-    formElement.submit();
+    window.location.href = `confirmation.html?orderId=${data.orderId}`;
   })
   .catch((error) => {
     console.error(error);
