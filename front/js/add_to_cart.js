@@ -37,4 +37,6 @@ addToCartButton.addEventListener('click', function(event) {
   let color = document.querySelector("#colors").value;
 
   addToCart(product, quantity, color);
+
+  window.location.href = '.';
 });
