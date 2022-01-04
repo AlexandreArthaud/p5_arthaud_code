@@ -1,6 +1,7 @@
 let addToCartButton = document.querySelector("#addToCart");
 
 function addToCart(product, quantity, color) {
+  // add a product to the cart in local storage
   let cart = JSON.parse(localStorage.getItem('cart'));
 
   if (!cart) {

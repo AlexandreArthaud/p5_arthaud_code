@@ -1,4 +1,5 @@
 function loadCart() {
+  // load the stored cart and display all of its items with their details in the HTML document
   let cart = JSON.parse(localStorage.getItem('cart'));
   let cartItemsElement = document.querySelector("#cart__items");
 

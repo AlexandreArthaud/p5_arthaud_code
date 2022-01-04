@@ -2,6 +2,7 @@ let formElement = document.querySelector(".cart__order__form");
 let formSubmitElement = document.querySelector(".cart__order__form input[type='button']")
 
 function getContactObject() {
+  // get various form input values and return them in a single JS object
   let firstName = document.querySelector("#firstName").value;
   let lastName = document.querySelector("#lastName").value;
   let address = document.querySelector("#address").value;
@@ -20,6 +21,7 @@ function getContactObject() {
 }
 
 function getCartProductsIDs() {
+  // returns a list of IDs of all products in the cart
   let cart = JSON.parse(localStorage.getItem('cart'));
   let cartProductsIDs = [];
 
@@ -31,6 +33,7 @@ function getCartProductsIDs() {
 }
 
 function createOrder() {
+  // send POST request to API; if succesful redirects to 'confirmation.html' with the order ID returned by API in the URL
   let requestData = {
     'contact': getContactObject(),
     'products': getCartProductsIDs(),

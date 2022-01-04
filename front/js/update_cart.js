@@ -1,4 +1,5 @@
 function updateCart() { 
+  // updates the cart with al articles, total article count and total price
   let itemElements = document.querySelectorAll('#cart__items article');
   let totalQuantityElement = document.querySelector('#totalQuantity');
   let totalPriceElement = document.querySelector('#totalPrice');

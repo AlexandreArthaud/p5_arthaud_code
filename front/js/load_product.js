@@ -1,4 +1,5 @@
 function displayProduct(product) {
+  // display various product fields in HTML document
   let imageElement = document.querySelector('.item__img')
   imageElement.innerHTML += product.getImgHTML();
 
@@ -16,6 +17,7 @@ function displayProduct(product) {
 }
 
 function loadProduct() {
+  // get product from api, display it as HTML and store it in localItem
   let current_url = new URL(window.location.href);
   let productId = current_url.searchParams.get('id');
   let product_url = `http://localhost:3000/api/products/${productId}`;

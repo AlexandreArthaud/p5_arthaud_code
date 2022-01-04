@@ -1,4 +1,5 @@
 function instantiate_products(products_json) {
+  // returns a list of products from a list of json product data
   products = [];
 
   for (let json of products_json) {
@@ -10,6 +11,7 @@ function instantiate_products(products_json) {
 }
 
 function display_products(products) {
+  // display a list of products in the HTML document
   let itemsElement = document.querySelector('#items');
   for (let product of products) {
     itemsElement.innerHTML += product.getHTML();
@@ -17,6 +19,7 @@ function display_products(products) {
 }
 
 function loadProducts() { 
+  // get all products from API and display them in HTML document
   let products_url = 'http://localhost:3000/api/products/'
   fetch(products_url)
     .then(function(res) {
